@@ -1,0 +1,15 @@
+#!/bin/sh
+
+TESTER="tester"
+
+OUT_PATH=`pwd`/out
+echo $OUT_PATH
+if [ ! -e $OUT_PATH ]; then
+  mkdir -p $OUT_PATH
+fi
+
+make
+clear
+chmod +x ${TESTER}
+./${TESTER} $@
+make fclean
