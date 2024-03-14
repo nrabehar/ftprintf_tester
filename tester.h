@@ -1,32 +1,35 @@
 #ifndef TESTER_H
 # define TESTER_H
 
-# ifndef USER_OUTPUT_FILE
-#  define USER_OUTPUT_FILE "out/user.out"
+# ifndef FT_OUT_FILE
+#  define FT_OUT_FILE "out/ft.out"
 # endif
-# ifndef SYS_OUTPUT_FILE
-#  define SYS_OUTPUT_FILE "out/sys.out"
+# ifndef OR_OUT_FILE
+#  define OR_OUT_FILE "out/or.out"
 # endif
 
-# include "helper.h"
+# include "helper/helper.h"
 # include "libftprintf.h"
-# include "test_list.h"
-# include "tests.h"
+# include <signal.h>
+# include <stdio.h>
+# include <unistd.h>
 
-# define TEST(fmt, ...)                                    \
-	test_nb++;                                            \
-	std_fd = pipe_stdout(USER_OUTPUT_FILE);               \
-	usr_out.result = ft_printf(fmt, __VA_ARGS__);            \
-	reset_stdout(std_fd);                                 \
-	std_fd = pipe_stdout(SYS_OUTPUT_FILE);                \
-	org_out.result = printf(fmt, __VA_ARGS__);            \
-	reset_stdout(std_fd);                                 \
-	org_out.content = get_file_content(SYS_OUTPUT_FILE);  \
-	usr_out.content = get_file_content(USER_OUTPUT_FILE); \
-	check(org_out, usr_out);                              \
-	//ft_push_test(&g_test, ft_create_test(test_nb, org_out, usr_out, caller));
+# define TEST(params)                          \
+	do                                        \
+	{                                         \
+		i32 std_fd;                           \
+		i32 or_res;                           \
+		i32 ft_res;                           \
+		std_fd = tester_pipe_stdout(OR_OUT_FILE);    \
+		or_res = printf params;               \
+		tester_reset_stdout(std_fd);                 \
+		std_fd = tester_pipe_stdout(FT_OUT_FILE);    \
+		ft_res = ft_printf params;               \
+		tester_reset_stdout(std_fd);                 \
+		ft_run_test(or_res, ft_res, #params); \
+	} while (0)
 
-int	check(t_output or_out, t_output ft_out);
-int	check_result(char *, char *or_file, char *ft_file);
+void	ft_handle_error(void);
+void	ft_run_test(i32 or_res, i32 ft_res, i8 *params);
 
 #endif
