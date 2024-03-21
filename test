@@ -3,6 +3,7 @@
 TESTER="tester"
 
 OUT_PATH=`pwd`/out
+
 echo $OUT_PATH
 if [ ! -e $OUT_PATH ]; then
   mkdir -p $OUT_PATH
@@ -10,6 +11,8 @@ fi
 
 echo "preparing test...";
 make
+clear
 chmod +x ${TESTER}
-./${TESTER} $@
+./${TESTER} __tx_nrb__ft $@
+make clean
 rm -rf $OUT_PATH

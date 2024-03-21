@@ -1,4 +1,6 @@
-FT_PRINTF_DIR = ../
+FT_PRINTF_DIR = /home/nekena/othercode/ft_printf
+# FT_PRINTF_DIR = /home/nekena/lab/ft_printf
+# FT_PRINTF_DIR = /home/nekena/othercode/mprintf
 LIBFTPRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 FT_PRINTF_HEADER_DIR = $(FT_PRINTF_DIR)
 
@@ -38,15 +40,16 @@ ${HELPER}:
 	@make -C ${HELPER_DIR} --no-print-directory
 
 clean :
-	@make clean -C ${FT_PRINTF_DIR} --no-print-directory
-	@make clean -C ${HELPER_DIR} --no-print-directory
-	@rm -rf $(OBJ_DIR)
-
-fclean : clean
-	@make fclean -C ${FT_PRINTF_DIR} --no-print-directory
-	@make fclean -C ${HELPER_DIR} --no-print-directory
+	@rm $(LIBFTPRINTF)
+	@rm $(HELPER)
 	@rm -f $(NAME)
 
-re : fclean all
+fclean :
+	@make fclean -C ${FT_PRINTF_DIR} --no-print-directory
+	@make fclean -C ${HELPER_DIR} --no-print-directory
+	@rm -rf $(OBJ_DIR)
+	@rm -f $(NAME)
+
+re : clean all
 
 .PHONY : clean fclean	all re

@@ -10,6 +10,8 @@ static i64	get_file_bytes(i8 *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
+  if (read(fd, &c, 0) < 0)
+    return (-1);
 	count = 0;
 	while (read(fd, &c, 1) > 0)
 		count++;
@@ -27,7 +29,9 @@ i8	*get_file_content(i8 *file)
 	if (fd < 0)
 		return (NULL);
 	size = get_file_bytes(file);
-	buffer = (i8 *)malloc(sizeof(i8) * (size));
+  if (size == -1)
+    return (NULL);
+	buffer = (i8 *)calloc(sizeof(i8), size + 1);
 	if (!buffer)
 		return (NULL);
 	if (read(fd, buffer, size) < 0)
@@ -36,7 +40,6 @@ i8	*get_file_content(i8 *file)
 		close(fd);
 		return (NULL);
 	}
-	buffer[size] = '\0';
 	close(fd);
 	return (buffer);
 }

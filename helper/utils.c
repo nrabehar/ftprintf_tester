@@ -26,21 +26,24 @@ void	tester_reset_stdout(i32 std_out_fd)
 
 void	ft_tester_set_title(i8 *title)
 {
-	printf(BOLD BLUE ITALIC "\n%s :\n" RESET, title);
+	tester_putstr(BOLD BLUE ITALIC "\n");
+	tester_putstr(title);
+	tester_putstr(" :\n" RESET);
+	tester_putstr("     ");
 }
 
 void	tester_putnbr(i64 num)
 {
 	if (num < 0)
 	{
-    tester_putstr("-");
+		tester_putstr("-");
 		num *= -1;
 	}
-  if (num >= 10)
-  {
-    tester_putnbr(num / 10);
-    tester_putnbr(num % 10);
-  }
-  if (num < 10)
-    tester_putchar(num + 48);
+	if (num >= 10)
+	{
+		tester_putnbr(num / 10);
+		tester_putnbr(num % 10);
+	}
+	if (num < 10)
+		tester_putchar(num + 48);
 }

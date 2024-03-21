@@ -43,9 +43,9 @@ void	tester_puts_no_printable(i8 const *str);
 void	tester_putnbr(i64 num);
 i32		tester_strcmp(i8 const *s1, i8 const *s2);
 i32		tester_memcmp(void *s1, void *s2, i64 len);
-void	print_error(i8 *caller, i32 test_n);
+void	print_error(i8 *caller, i32 test_n, i8 *or_cnt, i8 *ft_cnt, i32 or_res,
+			i32 ft_res);
 void	print_success(i32 test_n);
-void	print_diff(i8 *or_cnt, i8 *ft_cnt, i32 or_res, i32 ft_res);
 
 i8		*get_file_content(i8 *file);
 void	ft_tester_set_title(i8 *title);

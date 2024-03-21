@@ -49,20 +49,25 @@ void	print_diff(i8 *or_cnt, i8 *ft_cnt, i32 or_res, i32 ft_res)
 		i++;
 	}
 	print_res_pad(or_cnt, ft_cnt, ft_res, false);
-	tester_putstr(BOLD RED);
+	if (ft_res != or_res)
+		tester_putstr(BOLD RED);
+	else
+		tester_putstr(BOLD GREEN);
 	tester_putnbr(ft_res);
 	tester_putstr(RESET "\n");
 }
 
-void	print_error(i8 *caller, i32 test_n)
+void	print_error(i8 *caller, i32 test_n, i8 *or_cnt, i8 *ft_cnt, i32 or_res,
+		i32 ft_res)
 {
 	tester_putstr(RED "[");
 	tester_putnbr(test_n);
 	tester_putstr(" KO]\n" RESET);
-	tester_putstr("Test will called like that : ");
+	print_diff(or_cnt, ft_cnt, or_res, ft_res);
+	tester_putstr(YELLOW "Test will call like that : ");
 	tester_putstr(BLUE "ft_printf");
 	tester_putstr(caller);
-	tester_putstr(RESET ";\n");
+	tester_putstr(";\n\n" RESET);
 }
 
 void	print_success(i32 test_n)
