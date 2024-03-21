@@ -1,6 +1,6 @@
 #include "helper.h"
 
-t_data	ft_tester_get_data(i32 id, i32 or_res, i32 ft_res, i8 *params)
+t_data	init_data(i32 id, i32 or_res, i32 ft_res, i8 *params)
 {
 	t_data	data;
 

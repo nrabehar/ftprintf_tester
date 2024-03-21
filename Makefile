@@ -1,4 +1,4 @@
-FT_PRINTF_DIR = /home/nekena/othercode/ft_printf
+FT_PRINTF_DIR = ../
 LIBFTPRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 FT_PRINTF_HEADER_DIR = $(FT_PRINTF_DIR)
 
@@ -20,27 +20,22 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
-	@echo "compilation completed."
+	@echo ""
 
 $(OBJ_DIR) :
 	@mkdir $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o : %.c
-	@echo "compiling..."
 	@$(CC) $(CFLAGS) -c $< -o $(addprefix $(OBJ_DIR)/, $(<:.c=.o))
 
 $(NAME) : $(LIBFTPRINTF) $(HELPER) $(OBJ_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) -I$(FT_PRINTF_HEADER_DIR) -L$(FT_PRINTF_DIR) -L$(HELPER_DIR) $(OBJS) -o $(NAME) -lftprintf -lhelper
 
 ${LIBFTPRINTF}:
-	@echo "compiling..."
 	@make -C ${FT_PRINTF_DIR} --no-print-directory
-	@clear
 
 ${HELPER}:
-	@echo "compiling..."
 	@make -C ${HELPER_DIR} --no-print-directory
-	@clear
 
 clean :
 	@make clean -C ${FT_PRINTF_DIR} --no-print-directory
@@ -52,4 +47,6 @@ fclean : clean
 	@make fclean -C ${HELPER_DIR} --no-print-directory
 	@rm -f $(NAME)
 
-.PHONY : clean fclean	all
+re : fclean all
+
+.PHONY : clean fclean	all re

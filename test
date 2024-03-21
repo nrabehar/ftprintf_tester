@@ -8,8 +8,8 @@ if [ ! -e $OUT_PATH ]; then
   mkdir -p $OUT_PATH
 fi
 
+echo "preparing test...";
 make
-clear
 chmod +x ${TESTER}
 ./${TESTER} $@
 rm -rf $OUT_PATH

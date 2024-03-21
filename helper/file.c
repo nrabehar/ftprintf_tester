@@ -17,7 +17,7 @@ static i64	get_file_bytes(i8 *file)
 	return (count);
 }
 
-i8	*get_tester_file_content(i8 *file)
+i8	*get_file_content(i8 *file)
 {
 	i8 *buffer;
 	i64 size;

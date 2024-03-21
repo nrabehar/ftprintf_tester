@@ -4,6 +4,7 @@ SRCS = file.c \
 	string.c \
 	utils.c \
 	data.c \
+	printer.c \
 	validator.c
 
 OBJ_DIR = objs
@@ -14,13 +15,13 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
 
 $(OBJ_DIR)/%.o : %.c
-	$(CC) $(CFLAGS) -I . -c $< -o $(addprefix $(OBJ_DIR)/, $(<:.c=.o))
+	@$(CC) $(CFLAGS) -I . -c $< -o $(addprefix $(OBJ_DIR)/, $(<:.c=.o))
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	ar -rsc $(NAME) $(OBJS)
+	@ar -rsc $(NAME) $(OBJS)
 
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)
 
 all : $(NAME)
 

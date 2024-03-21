@@ -4,8 +4,8 @@ static bool	check_content_diff(t_data *data)
 {
   ui64 len;
 
-  len = ft_tester_strlen(data->or_cnt);
-	if (ft_tester_memcmp(data->or_cnt, data->ft_cnt, len) == 0)
+  len = tester_strlen(data->or_cnt);
+	if (tester_memcmp(data->or_cnt, data->ft_cnt, len) == 0)
 		return (false);
 	return (true);
 }

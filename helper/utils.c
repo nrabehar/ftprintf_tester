@@ -26,5 +26,21 @@ void	tester_reset_stdout(i32 std_out_fd)
 
 void	ft_tester_set_title(i8 *title)
 {
-	printf(BOLD BLUE "\nTest for %s%s%s :\n" RESET, ITALIC MANGETA, title, RESET);
+	printf(BOLD BLUE ITALIC "\n%s :\n" RESET, title);
+}
+
+void	tester_putnbr(i64 num)
+{
+	if (num < 0)
+	{
+    tester_putstr("-");
+		num *= -1;
+	}
+  if (num >= 10)
+  {
+    tester_putnbr(num / 10);
+    tester_putnbr(num % 10);
+  }
+  if (num < 10)
+    tester_putchar(num + 48);
 }
