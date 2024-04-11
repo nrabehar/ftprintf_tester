@@ -6,7 +6,6 @@ HELPER_DIR = $(shell pwd)/helper
 HELPER = $(HELPER_DIR)/libhelper.a
 
 SRCS = tester.c \
-	ft_error.c \
 	sets.c \
 
 OBJ_DIR = objs
