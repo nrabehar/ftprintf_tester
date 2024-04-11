@@ -1,6 +1,4 @@
-FT_PRINTF_DIR = /home/nekena/othercode/ft_printf
-# FT_PRINTF_DIR = /home/nekena/lab/ft_printf
-# FT_PRINTF_DIR = /home/nekena/othercode/mprintf
+FT_PRINTF_DIR = ../ft_printf
 LIBFTPRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 FT_PRINTF_HEADER_DIR = $(FT_PRINTF_DIR)
 

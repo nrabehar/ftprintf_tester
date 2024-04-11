@@ -27,6 +27,7 @@ void	ft_run_test(i32 or_res, i32 ft_res, i8 *params)
 	}
 	ft_tester_clear_data(&data);
 	g_test_number++;
+	usleep(99000);
 }
 
 static void	ft_parse_param(i8 *ac[])
@@ -43,10 +44,10 @@ i32	main(i32 av, i8 *ac[])
 	g_total_test = 0;
 	g_test_success = 0;
 	if (!ac[1] || tester_strcmp(ac[1], "__tx_nrb__ft") != 0)
-  {
-    tester_putstr(BOLD RED "\nPlease read the README.md file before.\n" RESET);
-		return (EXIT_FAILURE);
-  }
+	{
+		return (tester_putstr(BOLD RED "\nPlease read the README.md file before.\n" RESET),
+			EXIT_FAILURE);
+	}
 	if (av < 3)
 		tester_test_all();
 	else
@@ -62,6 +63,5 @@ i32	main(i32 av, i8 *ac[])
 	tester_putstr(RESET "/");
 	tester_putnbr(g_total_test);
 	tester_putstr("\n");
-	printf("\nArgument 0 %s\n", ac[1]);
 	return (0);
 }

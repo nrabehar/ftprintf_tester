@@ -2,11 +2,19 @@
 
 extern int	g_test_number;
 
+void	tester_test_no_flags(void)
+{
+	g_test_number = 0;
+	ft_tester_set_title(" - no category");
+	TEST(("Hello"));
+}
+
 void	tester_test_c_simple(void)
 {
 	g_test_number = 0;
 	ft_tester_set_title(" - simple c");
 	TEST(("%c", 'a'));
+	TEST(("%c", '\n'));
 	TEST(("%c", '\0'));
 	TEST(("%c%c", '\0', 'b'));
 	TEST(("%c%c", 'a', 'b'));
@@ -30,9 +38,10 @@ void	tester_test_s_simple(void)
 	ft_tester_set_title(" - simple s");
 	TEST(("%s", ""));
 	TEST(("%s", null_char));
-	TEST(("%s", "some string with %s hehe");
-	TEST((" %s", "can it handle \t and \n?"));
-	TEST(("%sx", "{} al$#@@@^&$$^#^@@^$*((&")));
+	g_test_number -= 4;
+	TEST(("%s", "some string with %s hehe"); TEST((" %s",
+				"can it handle \t and \n?")); TEST(("%sx",
+				"{} al$#@@@^&$$^#^@@^$*((&")));
 	TEST(("%s%s%s", "And ", "some", "joined"));
 	TEST(("%ss%ss%ss", "And ", "some other", "joined"));
 }
@@ -184,6 +193,7 @@ void	tester_test_x_b1(void)
 void	ft_test_mandatory(void)
 {
 	ft_tester_set_title(RESET BOLD CYAN "\nMandatory ");
+	tester_test_no_flags();
 	tester_test_c_simple();
 	tester_test_s_simple();
 	tester_test_p_simple();

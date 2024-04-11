@@ -30,6 +30,7 @@
 		ft_run_test(or_res, ft_res, #params);     \
 	} while (0)
 
+void	throw(char *msg);
 void	ft_handle_error(void);
 void	ft_run_test(i32 or_res, i32 ft_res, i8 *params);
 
