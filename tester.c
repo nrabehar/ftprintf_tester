@@ -27,7 +27,7 @@ void	ft_run_test(i32 or_res, i32 ft_res, i8 *params)
 	}
 	ft_tester_clear_data(&data);
 	g_test_number++;
-	usleep(99000);
+	usleep(12000);
 }
 
 static void	ft_parse_param(i8 *ac[])

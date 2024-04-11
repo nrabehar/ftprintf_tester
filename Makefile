@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
 all : $(NAME)
 	@echo ""

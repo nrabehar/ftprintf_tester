@@ -26,9 +26,17 @@ void	tester_reset_stdout(i32 std_out_fd)
 
 void	ft_tester_set_title(i8 *title)
 {
-	tester_putstr(BOLD BLUE ITALIC "\n");
+	tester_putstr(BOLD BLUE ITALIC "\n\n");
 	tester_putstr(title);
 	tester_putstr(" :\n" RESET);
+	tester_putstr("     ");
+}
+
+void	ft_tester_set_sub_title(i8 *category)
+{
+	tester_putstr(BOLD CYAN "\n\n     category '");
+	tester_putstr(category);
+	tester_putstr("' :\n" RESET);
 	tester_putstr("     ");
 }
 

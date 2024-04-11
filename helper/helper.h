@@ -49,6 +49,7 @@ void	print_success(i32 test_n);
 
 i8		*get_file_content(i8 *file);
 void	ft_tester_set_title(i8 *title);
+void	ft_tester_set_sub_title(i8 *category);
 
 t_data	init_data(i32 id, i32 or_res, i32 ft_res, i8 *params);
 void	ft_tester_clear_data(t_data *data);
