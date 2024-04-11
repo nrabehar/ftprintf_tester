@@ -6,6 +6,7 @@ HELPER_DIR = $(shell pwd)/helper
 HELPER = $(HELPER_DIR)/libhelper.a
 
 SRCS = tester.c \
+	signal_handler.c \
 	sets.c \
 
 OBJ_DIR = objs
