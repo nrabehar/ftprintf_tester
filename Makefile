@@ -1,4 +1,4 @@
-FT_PRINTF_DIR = ../ft_printf
+FT_PRINTF_DIR = ..
 LIBFTPRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 FT_PRINTF_HEADER_DIR = $(FT_PRINTF_DIR)
 
